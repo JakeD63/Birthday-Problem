@@ -1,5 +1,5 @@
-from dataFetch import *
-from simulations import *
+from DataFetch import *
+from Simulations import *
 import collections
 
 #currently prints true if random group of 23 dates
