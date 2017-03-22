@@ -1,4 +1,4 @@
-from datetime import *
+from datetime import datetime
 
 def getDatesFromFile(filepath):
     # returns an array with days of the year
