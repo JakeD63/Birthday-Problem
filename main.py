@@ -1,5 +1,5 @@
-from DataFetch import *
-from Simulations import *
+from DataFetch import getDatesFromFile
+from Simulations import simulateBirthdayProblem
 
 def main():
     # currently prints true if random group of 23 dates
