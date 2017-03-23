@@ -24,5 +24,5 @@ def extractDayOfYear(dateString, dateFormat = '%m/%d/%Y'):
     # params: dateString - date to convert (ex.10/10/2017)
     #         dateFormat - format that dateString is in (default value mm/dd/YY)
     dateobj = datetime.strptime(dateString, dateFormat).date()
-    day_of_year = dateobj.timetuple().tm_yday
-    return day_of_year
+    return dateobj.timetuple().tm_yday
+    
