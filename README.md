@@ -14,3 +14,4 @@ Provides functions for reading birthdays in and converting them from a date to a
 
 ### Simulations.py
 Contains functions for simulating the birthday problem with our data with n selections
+Also contains a function to compare two samples n number of times
