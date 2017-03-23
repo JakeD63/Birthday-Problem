@@ -7,9 +7,9 @@ def simulateBirthdayProblem(birthdays, numToSelect):
     # NOTE: param birthdays is expected to be converted to day of the year
     #       (ex. 01/01/2017 should be 1)
 
-    #get random numbers to sample
+    # get random numbers to sample
     indices = random.sample(range(0, len(birthdays)), numToSelect)
-    #get list of random sample
+    # get list of random sample
 
     sample = []
     for i in indices:
@@ -27,3 +27,15 @@ def generateRandomBirthdays(num):
         sample.append(random.randint(0, 366))
 
     return sample
+
+def compareSampleWithRandomData(populationSample, timesToRun, sampleSize):
+    # This will run a simulation timesToRun times, comparing two lists of data
+    populationSuccess, randomSuccess = 0, 0
+    for i in range(0, timesToRun):
+        random = generateRandomBirthdays(len(populationSample))
+        if simulateBirthdayProblem(populationSample, sampleSize):
+            populationSuccess += 1
+        if simulateBirthdayProblem(random, sampleSize):
+            randomSuccess += 1
+    return populationSuccess, randomSuccess
+
