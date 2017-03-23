@@ -17,3 +17,13 @@ def simulateBirthdayProblem(birthdays, numToSelect):
 
     #return true if there are duplicates
     return len(sample) != len(set(sample))
+
+
+def generateRandomBirthdays(num):
+    # returns a list of random birthdays to be used
+    # with the simulation
+    sample = []
+    for i in range(0, num):
+        sample.append(random.randint(0, 366))
+
+    return sample
