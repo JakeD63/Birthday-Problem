@@ -16,6 +16,6 @@ Provides functions for reading birthdays in and converting them from a date to a
 Contains functions for simulating the birthday problem with our data with n selections
 Also contains a function to compare two samples n number of times
 
-DEPENDENCIES:
+## Dependencies
 You will need to install numpy in order for some of these functions to work. This can be done with
 pip3 install numpy (you may need to sudo this)
