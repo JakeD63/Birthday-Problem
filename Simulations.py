@@ -70,18 +70,21 @@ def compareSampleWithRandomData(populationSample, timesToRun, peopleSelected):
             populationSuccess += 1
         if simulateBirthdayProblem(random, peopleSelected):
             randomSuccess += 1
-    outputComparison(populationSuccess, randomSuccess, peopleSelected, timesToRun, "CSC Population Sample", "Pure Random Sample")
+    outputComparison([populationSuccess, randomSuccess], ["CSC Population Sample", "Pure Random Sample"], timesToRun, peopleSelected)
     return populationSuccess, randomSuccess
 
 
-def outputComparison(sampleAResult, sampleBResult, peopleSelected, timesRan, aName = "Sample A", bName = "Sample B"):
-    # outputs comparison of two samples, takes the success rate of both,
-    # the number of people selected for each simulation, and the number of times
-    # the simulation was run for both
+def outputComparison(sampleResultsList, sampleNameList, timesRun, peopleSelected):
+    # outputs comparison of samples
 
-    aPercent = float(sampleAResult) / timesRan * 100
-    bPercent = float(sampleBResult) / timesRan * 100
+    if len(sampleResultsList) != len(sampleNameList):
+        print("Sample results and names list must be same length")
+        return
 
-    print("Simulations Run: " + str(timesRan) + " People Selected: " + str(peopleSelected))
-    print(aName + " Stats: " + str(aPercent) + "% Success")
-    print(bName + " Stats: " + str(bPercent) + "% Success")
+    template = "{0:25}{1:25}"
+    print("Simulation Results")
+    print("Number of Simulations Run: " + str(timesRun))
+    print("Number of people selected in each simulation: " + str(peopleSelected) + '\n')
+    print(template.format("Sample Name", "Sample Success Rate") + '\n')
+    for i in range(0, len(sampleNameList)):
+        print(template.format(sampleNameList[i], str(float(sampleResultsList[i]) / timesRun * 100) + '%'))
