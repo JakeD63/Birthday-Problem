@@ -70,11 +70,11 @@ def compareSampleWithRandomData(populationSample, timesToRun, peopleSelected):
             populationSuccess += 1
         if simulateBirthdayProblem(random, peopleSelected):
             randomSuccess += 1
-    outputComparison(populationSuccess, randomSuccess, peopleSelected, timesToRun)
+    outputComparison(populationSuccess, randomSuccess, peopleSelected, timesToRun, "CSC Population Sample", "Pure Random Sample")
     return populationSuccess, randomSuccess
 
 
-def outputComparison(sampleAResult, sampleBResult, peopleSelected, timesRan):
+def outputComparison(sampleAResult, sampleBResult, peopleSelected, timesRan, aName = "Sample A", bName = "Sample B"):
     # outputs comparison of two samples, takes the success rate of both,
     # the number of people selected for each simulation, and the number of times
     # the simulation was run for both
@@ -83,5 +83,5 @@ def outputComparison(sampleAResult, sampleBResult, peopleSelected, timesRan):
     bPercent = float(sampleBResult) / timesRan * 100
 
     print("Simulations Run: " + str(timesRan) + " People Selected: " + str(peopleSelected))
-    print("Sample A Stats: " + str(aPercent) + "% Success")
-    print("Sample B Stats: " + str(bPercent) + "% Success")
+    print(aName + " Stats: " + str(aPercent) + "% Success")
+    print(bName + " Stats: " + str(bPercent) + "% Success")
