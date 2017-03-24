@@ -2,9 +2,8 @@ from DataFetch import getDatesFromFile
 from Simulations import *
 
 def main():
-    compareSamples()
+    #compareSamples()
     populationSample = getDatesFromFile('data.txt')
-    #generateWeightedBirthdays(populationSample)
 
 def compareSamples():
     # currently prints true if random group of 23 dates
