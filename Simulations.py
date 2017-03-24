@@ -35,20 +35,30 @@ def generateWeightedBirthdays(population, num = 200):
     # data into 12 sections (1/month), and assigning each section a probability
 
     # generate sections (all will be 30 days except the last, 366 possible days)
-    sections = [30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 367]
-    bins = [0,0,0,0,0,0,0,0,0,0,0,0,0]
+    sections = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 367]
+    bins = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
     for i in population:
         secIndex = 0
         while i > sections[secIndex]:
             secIndex +=1
-        bins[secIndex] +=1
+        bins[secIndex - 1] +=1
     #normalize bins so that they are percentages
     for i in range(0, len(bins)):
         bins[i] /= len(population)
-    
-    #use choice to get which section to generate birthdays in each iteration
-    print(choice(sections, p=bins))
+    print(bins)
+    # use choice to get which section to generate birthdays in each iteration
+    # bins are strictly greater than, so if choice returns 240, the range is 240-270
+    sample = []
+    for i in range(0, num):
+        r1 = choice(sections, p=bins)
+        # set upper limit, special case for 360-367 since range is not 30 like the others
+        if r1 == 360:
+            r2 = 367
+        else:
+            r2 = r1 + 30
+        sample.append(random.randint(r1, r2))
+    return sample
 
 
 
