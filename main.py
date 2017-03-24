@@ -10,9 +10,9 @@ def testRun():
     populationSample = getDatesFromFile('data.txt')
     randomSample = generateRandomBirthdays(len(populationSample))
     weightedSample = generateWeightedBirthdays(populationSample, len(populationSample))
-    results = compareSamples([populationSample, randomSample, weightedSample], timesToRun, groupSize)
+    results = compareSamples([populationSample, weightedSample, randomSample], timesToRun, groupSize)
 
-    outputComparison(results, ["CSC Population Sample", "Pure Random Sample", "Weighted Random Sample"], timesToRun, groupSize)
+    outputComparison(results, ["CSC Population Sample", "Weighted Random Sample", "Pure Random Sample"], timesToRun, groupSize)
 
 
 if __name__ == '__main__':
