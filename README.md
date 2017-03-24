@@ -13,8 +13,8 @@ Driver for the program, gets list of birthdays and calls the simulation
 Provides functions for reading birthdays in and converting them from a date to a day of the year (1-366)
 
 ### Simulations.py
-Contains functions for simulating the birthday problem with our data with n selections
-Also contains a function to compare two samples n number of times
+Contains functions for simulating the birthday problem with our data with n selections.
+Also contains a function to compare many samples n number of times
 
 ## Dependencies
 You will need to install numpy in order for some of these functions to work. This can be done with
