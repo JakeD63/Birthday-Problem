@@ -6,12 +6,13 @@ def main():
 
 def testRun():
     timesToRun = 1000
-    peopleSelected = 23
+    groupSize = 23
     populationSample = getDatesFromFile('data.txt')
+    randomSample = generateRandomBirthdays(len(populationSample))
+    weightedSample = generateWeightedBirthdays(populationSample, len(populationSample))
+    results = compareSamples([populationSample, randomSample, weightedSample], timesToRun, groupSize)
 
-    populationSuccess, randomSuccess = compareSampleWithRandomData(populationSample, timesToRun, 23)
-    outputComparison([populationSuccess, randomSuccess], ["CSC Population Sample", "Pure Random Sample"], timesToRun, peopleSelected)
-
+    outputComparison(results, ["CSC Population Sample", "Pure Random Sample", "Weighted Random Sample"], timesToRun, groupSize)
 
 
 if __name__ == '__main__':
