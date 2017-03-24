@@ -70,7 +70,6 @@ def compareSampleWithRandomData(populationSample, timesToRun, peopleSelected):
             populationSuccess += 1
         if simulateBirthdayProblem(random, peopleSelected):
             randomSuccess += 1
-    outputComparison([populationSuccess, randomSuccess], ["CSC Population Sample", "Pure Random Sample"], timesToRun, peopleSelected)
     return populationSuccess, randomSuccess
 
 
