@@ -61,16 +61,27 @@ def generateWeightedBirthdays(population, num = 200):
     return sample
 
 
-
-
-def compareSampleWithRandomData(populationSample, timesToRun, sampleSize):
+def compareSampleWithRandomData(populationSample, timesToRun, peopleSelected):
     # This will run a simulation timesToRun times, comparing two lists of data
     populationSuccess, randomSuccess = 0, 0
     for i in range(0, timesToRun):
         random = generateRandomBirthdays(len(populationSample))
-        if simulateBirthdayProblem(populationSample, sampleSize):
+        if simulateBirthdayProblem(populationSample, peopleSelected):
             populationSuccess += 1
-        if simulateBirthdayProblem(random, sampleSize):
+        if simulateBirthdayProblem(random, peopleSelected):
             randomSuccess += 1
+    outputComparison(populationSuccess, randomSuccess, peopleSelected, timesToRun)
     return populationSuccess, randomSuccess
 
+
+def outputComparison(sampleAResult, sampleBResult, peopleSelected, timesRan):
+    # outputs comparison of two samples, takes the success rate of both,
+    # the number of people selected for each simulation, and the number of times
+    # the simulation was run for both
+
+    aPercent = float(sampleAResult) / timesRan * 100
+    bPercent = float(sampleBResult) / timesRan * 100
+
+    print("Simulations Run: " + str(timesRan) + " People Selected: " + str(peopleSelected))
+    print("Sample A Stats: " + str(aPercent) + "% Success")
+    print("Sample B Stats: " + str(bPercent) + "% Success")
