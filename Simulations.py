@@ -3,14 +3,14 @@ from numpy.random import choice
 
 
 ## TODO: return more than just true/false, include the duplicate(s) as well
-def simulateBirthdayProblem(birthdays, numToSelect):
+def simulateBirthdayProblem(birthdays, groupSize):
     # simulates the birthday problem with passed in list of birthdays
     # and the number of birthdays to select for the simulation
     # NOTE: param birthdays is expected to be converted to day of the year
     #       (ex. 01/01/2017 should be 1)
 
     # get random numbers to sample
-    indices = random.sample(range(0, len(birthdays)), numToSelect)
+    indices = random.sample(range(0, len(birthdays)), groupSize)
     # get list of random sample
 
     sample = []
@@ -46,7 +46,6 @@ def generateWeightedBirthdays(population, num = 200):
     #normalize bins so that they are percentages
     for i in range(0, len(bins)):
         bins[i] /= len(population)
-    print(bins)
     # use choice to get which section to generate birthdays in each iteration
     # bins are strictly greater than, so if choice returns 240, the range is 240-270
     sample = []
@@ -61,29 +60,36 @@ def generateWeightedBirthdays(population, num = 200):
     return sample
 
 
-def compareSampleWithRandomData(populationSample, timesToRun, peopleSelected):
-    # This will run a simulation timesToRun times, comparing two lists of data
-    populationSuccess, randomSuccess = 0, 0
+def compareSamples(samples, timesToRun, groupSize):
+    # This will run a simulation timesToRun times
+    # comparing samples sent in
+    # args: samples    - a list of samples (list of lists)
+    #       timesToRun - number of simulations to run
+    #       groupSize  - size of groups
+
+    #set up results list with 0 as initial value
+    results = []
+    for i in range(0, len(samples)):
+        results.append(0)
+
     for i in range(0, timesToRun):
-        random = generateRandomBirthdays(len(populationSample))
-        if simulateBirthdayProblem(populationSample, peopleSelected):
-            populationSuccess += 1
-        if simulateBirthdayProblem(random, peopleSelected):
-            randomSuccess += 1
-    return populationSuccess, randomSuccess
+        for s in range(0, len(samples)):
+            if(simulateBirthdayProblem(samples[s], groupSize)):
+                results[s] += 1
 
+    return results
 
-def outputComparison(sampleResultsList, sampleNameList, timesRun, peopleSelected):
+def outputComparison(sampleResultsList, sampleNameList, timesRun, groupSize):
     # outputs comparison of samples
 
     if len(sampleResultsList) != len(sampleNameList):
         print("Sample results and names list must be same length")
         return
 
-    template = "{0:25}{1:25}"
+    template = "{0:25}{1:4}"
     print("Simulation Results")
     print("Number of Simulations Run: " + str(timesRun))
-    print("Number of people selected in each simulation: " + str(peopleSelected) + '\n')
+    print("Number of people selected in each simulation: " + str(groupSize) + '\n')
     print(template.format("Sample Name", "Sample Success Rate") + '\n')
     for i in range(0, len(sampleNameList)):
-        print(template.format(sampleNameList[i], str(float(sampleResultsList[i]) / timesRun * 100) + '%'))
+        print(template.format(sampleNameList[i], str("{0:.2f}".format(float(sampleResultsList[i]) / timesRun * 100)) + '%'))
