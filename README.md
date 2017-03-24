@@ -10,7 +10,7 @@ Run main.py with python3, prints statistics summary of samples
 Driver for the program, gets list of birthdays and calls the simulation
 
 ### DataFetch.py
-Provides functions for reading birthdays in and converting them from a date to a day of the year (1-366)
+Provides functions for reading birthdays in and converting them from a date to a day of the year (1-366).
 Data input is expected in .txt format, one birthday per line in format dd/mm/YYYY
 
 ### Simulations.py
