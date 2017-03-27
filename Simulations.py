@@ -77,7 +77,8 @@ def compareSamples(samples, timesToRun, groupSize):
 
     for i in range(0, timesToRun):
         for s in range(0, len(samples)):
-            if(simulateBirthdayProblem(samples[s], groupSize)):
+            success, duplicates = simulateBirthdayProblem(samples[s], groupSize)
+            if(success):
                 results[s] += 1
 
     return results

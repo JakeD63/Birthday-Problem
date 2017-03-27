@@ -6,7 +6,7 @@ def main():
     x, list = simulateBirthdayProblem(sample, 23)
     print(x)
     print(list)
-    #testRun()
+    testRun()
 
 def testRun():
     timesToRun = 1000
