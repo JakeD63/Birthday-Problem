@@ -1,5 +1,7 @@
 import random
 from numpy.random import choice
+from collections import Counter
+import sys
 
 
 def simulateBirthdayProblem(birthdays, groupSize):
@@ -8,6 +10,8 @@ def simulateBirthdayProblem(birthdays, groupSize):
     # NOTE: param birthdays is expected to be converted to day of the year
     #       (ex. 01/01/YYYY should be 1)
 
+    if groupSize > len(birthdays):
+        sys.exit("simulateBirthdayProblem: Group Size Cannot be larger than the sample size")
     # get random numbers to sample
     indices = random.sample(range(0, len(birthdays)), groupSize)
     # get list of random sample
@@ -17,7 +21,7 @@ def simulateBirthdayProblem(birthdays, groupSize):
         sample.append(birthdays[i])
 
     #return true if there are duplicates
-    return len(sample) != len(set(sample))
+    return len(sample) != len(set(sample)), [k for k,v in Counter(sample).items() if v>1]
 
 
 def generateRandomBirthdays(num):

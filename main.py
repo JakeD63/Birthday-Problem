@@ -2,7 +2,11 @@ from DataFetch import getDatesFromFile
 from Simulations import *
 
 def main():
-    testRun()
+    sample = generateRandomBirthdays(1000)
+    x, list = simulateBirthdayProblem(sample, 23)
+    print(x)
+    print(list)
+    #testRun()
 
 def testRun():
     timesToRun = 1000
