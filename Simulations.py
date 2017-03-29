@@ -19,7 +19,7 @@ def simulateBirthdayProblem(birthdays, groupSize):
     for i in indices:
         sample.append(birthdays[i])
 
-    #return true if there are duplicates
+    #return true if there are duplicates, also return list of duplicates
     return len(sample) != len(set(sample)), [k for k,v in Counter(sample).items() if v>1]
 
 
