@@ -19,4 +19,4 @@ Also contains a function to compare many samples n number of times
 
 ## Dependencies
 You will need to install numpy in order for some of these functions to work. This can be done with
-pip3 install numpy (you may need to sudo this)
+pip3 install numpy (you may need to sudo this). On windows or a machine where you default to python 3, use pip install numpy.
