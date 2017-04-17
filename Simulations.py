@@ -47,7 +47,9 @@ def generateWeightedBirthdays(population, num = 200):
         bins[secIndex - 1] +=1
     #normalize bins so that they are percentages
     for i in range(0, len(bins)):
-        bins[i] /= len(population)
+        bins[i] /= float(len(population))
+
+
     # use choice to get which section to generate birthdays in each iteration
     # bins are strictly greater than, so if choice returns 240, the range is 240-270
     sample = []
